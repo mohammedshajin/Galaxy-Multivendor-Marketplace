@@ -4,4 +4,17 @@
 
 {% block content %}
 <h1>Become A Seller</h1>
+<form method="post" action="." >
+    {% csrf_token %}
+
+    {{ form.as_p }}
+
+    <div class="field">
+        <div class="control">
+            <button class="button is-dark is-uppercase">Sign up</button>
+
+        </div>
+    </div>
+</form> 
+
 {% endblock %}

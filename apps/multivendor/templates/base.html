@@ -36,8 +36,14 @@
     </section>
     <footer class="footer">
         <h3 class="is-size-4 mb-4">Galaxy</h3>
-    
+
+        {% if request.user.is_authenticated %}   
+        <a href="{% url 'seller_admin' %}">Admin</a>
+        {% else %}
         <a href="{% url 'become_seller' %}">Start selling</a>
+        {% endif %}
+
+        
     </footer>
 </body>
 </html>

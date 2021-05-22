@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block title %}Seller Profile{% endblock %}
+
+{% block content %}
+    <h1 class="title">Hi {{ seller.name }}</h1>
+
+    <a href="{% url 'logout' %}" class="button is-danger is-upperclass">Logout</a>
+{% endblock %}
