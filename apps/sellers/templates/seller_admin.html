@@ -11,6 +11,8 @@
 
 <div class="box">
     <h2>My Products</h2>
+    <a href="{% url 'add_product' %}" class="button is-danger is-upperclass mb-6">Add Product</a>
+
     {% if products %}
         <table class="table is-full width">
             <thead>
