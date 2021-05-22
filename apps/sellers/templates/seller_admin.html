@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block title %}Seller Profile{% endblock %}
+
+{% block content %}
+<div class="box">
+    <h1 class="title">Hi {{ seller.name }}</h1>
+
+    <a href="{% url 'logout' %}" class="button is-danger is-upperclass">Logout</a>
+</div>
+
+<div class="box">
+    <h2>My Products</h2>
+    <a href="{% url 'add_product' %}" class="button is-danger is-upperclass mb-6">Add Product</a>
+
+    {% if products %}
+        <table class="table is-full width">
+            <thead>
+                <th>Title</th>
+                <th>Price</th>
+            </thead>
+            <tbody>
+                {% for product in products %}
+                <tr>
+                    <td>{{ product.title }}</td>
+                    <td>{{ product.price }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+    <p>You don't have any products</p>
+    {% endif %}
+</div>
+
+{% endblock %}

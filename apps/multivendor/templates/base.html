@@ -1,0 +1,49 @@
+{% load static %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+    <script src="{% static 'js/main.js' %}"></script>
+</head>
+<body>
+    <nav class="navbar is-dark">
+        <div class="navbar-brand">
+            <a href="/" class="navbar-item"><strong>Interiorshop</strong></a>
+    
+            <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="main-navbar">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </a>
+        </div>
+    
+        <div class="navbar-menu" id="main-navbar">
+            <div class="navbar-end">
+                <a href="{% url 'contact' %}" class="navbar-item">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="section">
+        <div class="container"></div>
+        {% block content %}
+        {% endblock %}
+    </section>
+    <footer class="footer">
+        <h3 class="is-size-4 mb-4">Galaxy</h3>
+
+        {% if request.user.is_authenticated %}   
+        <a href="{% url 'seller_admin' %}">Admin</a>
+        {% else %}
+        <a href="{% url 'become_seller' %}">Start selling</a>
+        {% endif %}
+
+        
+    </footer>
+</body>
+</html>
