@@ -44,6 +44,10 @@
                         <a href="{% url 'category' category.slug %}" class="navbar-item">{{ category.title }}</a>
                 {% endfor %}
                 <a href="{% url 'contact' %}" class="navbar-item">Contact</a>
+                <div class="navbar-item">
+                    <a href="{% url 'cart' %}" class="button is-dark">Cart{% if cart %} ({{ cart|length }}){% endif %}</a>
+                </div>
+
             </div>
         </div>
     </nav>
