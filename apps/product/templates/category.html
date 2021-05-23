@@ -1,15 +1,15 @@
 {% extends 'base.html' %}
 
-{% block title %}welcome{% endblock %}
+{% block title %}{{ category.title }}{% endblock %}
 
 {% block content %}
 
 <div class="columns is-multiline mb-6">
     <div class="column is-12 has-text-centered mt-6 mb-6">
-        <h2 class="is-size-3">Newest Products</h2>
+        <h2 class="is-size-3">{{ category.title }}</h2>
     </div>
 
-    {% for product in newest_products %}
+    {% for product in category.products.all %}
         {% include 'list_item.html' %}
     {% endfor %}
 </div>

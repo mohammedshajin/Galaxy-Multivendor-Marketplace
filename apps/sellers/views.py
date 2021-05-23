@@ -1,4 +1,4 @@
-from django.shortcuts import redirect, render
+from django.shortcuts import redirect, render ,get_object_or_404
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.utils.text import slugify
@@ -26,7 +26,7 @@ def become_seller(request):
 def seller_admin(request):
     seller = request.user.seller
     products = seller.products.all()
-    return render(request, 'seller_admin.html', {'seller': seller, 'products':products})
+    return render(request, 'seller_admin.html', {'seller': seller, 'products': products})
 
 @login_required
 def add_product(request):
@@ -39,7 +39,7 @@ def add_product(request):
             product.slug = slugify(product.title)
             product.save()
 
-            return redirect('vendor_admin')
+            return redirect('seller_admin')
     else:
         form = ProductForm()
     
