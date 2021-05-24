@@ -1,3 +1,5 @@
+media
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
@@ -133,4 +135,3 @@ sendgrid.env
 
 sendgrid.env
 
-/media/
