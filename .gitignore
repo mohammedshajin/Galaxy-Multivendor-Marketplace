@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /media
 
 # Byte-compiled / optimized / DLL files
@@ -133,3 +134,8 @@ s e n d g r i d . e n v
  s e n d g r i d . e n v  
  s e n d g r i d . e n v  
  
+=======
+media/uploads/uploads
+
+sendgrid.env
+>>>>>>> a4be118c3d93a50b4609a8e68e727a88e4547dfb
