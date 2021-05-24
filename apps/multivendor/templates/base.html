@@ -67,8 +67,11 @@
         <br>
         <a href="{% url 'login' %}">Login</a>
         {% endif %}
-
-        
+        <br>
+        <a href="{% url 'sellers' %}">Sellers</a>
     </footer>
+
+    {% block scripts %}
+    {% endblock %}
 </body>
 </html>

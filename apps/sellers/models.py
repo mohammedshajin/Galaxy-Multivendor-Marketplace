@@ -12,4 +12,11 @@ class Seller(models.Model):
     def __str__(self):
         return self.name
 
+    def get_balance(self):
+        items = self.items.filter(seller_paid=False, order__sellers__in=[self.id])
+        return sum((item.product.price * item.quantity) for item in items)
+    
+    def get_paid_amount(self):
+        items = self.items.filter(seller_paid=True, order__sellers__in=[self.id])
+        return sum((item.product.price * item.quantity) for item in items)
 

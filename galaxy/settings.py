@@ -34,6 +34,17 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+STRIPE_PUB_KEY = 'pk_test_51IuWjxSE3f2Hhlixj9Oallum2BlJd4uLegOYuWjZLSsT1lVSZoWb662n20CwxVVdtNo8aSaze9eFusyu04zUWOu500noO2YoEp'
+STRIPE_SECRET_KEY = 'sk_test_51IuWjxSE3f2HhlixGskjhHi3HxrY8HcuYSWoErToLgp1oX6A2hWC578F3sV0cyQ1smILbb8xHWkdOR6zCxyq8AJr00OXlbRi83'
+
+
+EMAIL_HOST = 'smtp.sendgrid.net'
+EMAIL_HOST_USER = 'apikey'
+EMAIL_HOST_PASSWORD = 'typeyourkey'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+DEFAULT_EMAIL_FROM = 'Galaxy <noreply@galaxy.com>'
+
 
 # Application definition
 
@@ -47,7 +58,8 @@ INSTALLED_APPS = [
     'apps.multivendor',
     'apps.sellers',
     'apps.product',
-    'apps.cart'
+    'apps.cart',
+    'apps.order'
 ]
 
 MIDDLEWARE = [
