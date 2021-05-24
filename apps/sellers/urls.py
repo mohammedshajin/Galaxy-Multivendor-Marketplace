@@ -7,6 +7,7 @@ urlpatterns = [
     path('seller-admin/', views.seller_admin, name='seller_admin'),
     path('add_product/', views.add_product, name='add_product'),
     path('edit_seller/', views.edit_seller, name='edit_seller'),
+    path('edit-product/<int:pk>/', views.edit_product, name='edit_product'),
     path('logout/', auth_views.LogoutView.as_view(), name='logout'),
     path('login/', auth_views.LoginView.as_view(template_name='login.html'), name='login'),
     path('', views.sellers, name='sellers'),
