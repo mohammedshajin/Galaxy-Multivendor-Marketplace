@@ -26,7 +26,22 @@ def become_seller(request):
 def seller_admin(request):
     seller = request.user.seller
     products = seller.products.all()
-    return render(request, 'seller_admin.html', {'seller': seller, 'products': products})
+    orders = seller.orders.all()
+
+    for order in orders:
+        order.seller_amount = 0
+        order.seller_paid_amount = 0
+        order.fully_paid = True
+
+        for item in order.items.all():
+            if item.seller == request.user.seller:
+                if item.seller_paid:
+                    order.seller_paid_amount += item.get_total_price()
+                else:
+                    order.seller_amount += item.get_total_price()
+                    order.fully_paid = False
+
+    return render(request, 'seller_admin.html', {'seller': seller, 'products': products, 'orders': orders})
 
 @login_required
 def add_product(request):
@@ -44,3 +59,33 @@ def add_product(request):
         form = ProductForm()
     
     return render(request, 'add_product.html', {'form': form})
+
+@login_required
+def edit_seller(request):
+    seller = request.user.seller
+
+    if request.method == 'POST':
+        name = request.POST.get('name', '')
+        email = request.POST.get('email', '')
+
+        if name:
+            seller.created_by.email = email
+            seller.created_by.save()
+
+            seller.name = name
+            seller.save()
+
+            return redirect('seller_admin')
+    
+    return render(request, 'edit_seller.html', {'seller': seller})
+
+
+def sellers(request):
+    sellers = Seller.objects.all()
+
+    return render(request, 'sellers.html', {'sellers': sellers})
+
+def seller(request, seller_id):
+    seller = get_object_or_404(Seller, pk=seller_id)
+
+    return render(request, 'seller.html', {'seller': seller})
